@@ -96,10 +96,27 @@ public class Main {
       cont += m1 * Math.pow(2,inter);
       
     }
-    
+    double cont2 = 0;
+    for(int i = numeros2.size() -1; i >= 0 ; i--){
+      double m1 = numeros2.get(i);
+      int inter= (numeros2.size()-1) - i;
+
+      cont2 += m1 * Math.pow(2,inter);
+
+    }
+    double cont3= 0;
+    for(int i = soma.size() -1; i >= 0 ; i--){
+      double m1 = soma.get(i);
+      int inter= (soma.size()-1) - i;
+
+      cont3 += m1 * Math.pow(2,inter);
+
+    }
 
     System.out.println("\n--- Resultado Final ---");
-     System.out.println("Primeiro numero binario em decimal: " + cont);
+    System.out.println("Primeiro numero binario em decimal: " + cont);
+    System.out.println("Segundo numero binario em decimal: " + cont2);
+    System.out.println("A soma do numero binario em decimal: " + cont3);
     System.out.println("Primeiro numero binario: " + numeros);
     System.out.println("Segundo numero binario: " + numeros2);
     System.out.println("Soma dos binarios: " + soma);
