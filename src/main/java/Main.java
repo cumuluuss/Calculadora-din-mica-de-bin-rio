@@ -83,10 +83,23 @@ public class Main {
     }
 
     if (vaiUm == 1) {
+  
       soma.add(0, 1.0);
     }
+    double cont = 0;
+    //11001
+    // transformando os vetores binarios em numeros inteiros
+    for(int i = numeros.size() -1; i >= 0 ; i--){
+      double m1 = numeros.get(i);
+      int inter= (numeros.size()-1) - i;
+      
+      cont += m1 * Math.pow(2,inter);
+      
+    }
+    
 
     System.out.println("\n--- Resultado Final ---");
+     System.out.println("Primeiro numero binario em decimal: " + cont);
     System.out.println("Primeiro numero binario: " + numeros);
     System.out.println("Segundo numero binario: " + numeros2);
     System.out.println("Soma dos binarios: " + soma);
