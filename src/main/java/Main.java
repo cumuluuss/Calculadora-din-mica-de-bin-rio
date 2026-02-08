@@ -7,6 +7,11 @@ public class Main {
     ArrayList<Double> numeros = new ArrayList<Double>();
     ArrayList<Double> numeros2 = new ArrayList<Double>();
     ArrayList<Double> soma = new ArrayList<Double>();
+    
+    // serve para fazer matriz 
+    ArrayList<ArrayList<Double>> estanderesultados = new ArrayList<ArrayList<Double>>();
+    ArrayList<Double> resultadoFinal = new ArrayList<Double>();
+    
     int vaiUm = 0;
     System.out.println("Digite um número e aperte Enter.");
     System.out.println("Para encerrar e ver a soma, aperte Enter em uma linha vazia:");
@@ -112,14 +117,65 @@ public class Main {
       cont3 += m1 * Math.pow(2,inter);
 
     }
+   
+
+   // multiplicação de numeros binarios
+    for(int i = numeros2.size() -1; i >= 0 ; i--){
+      ArrayList<Double> linhaAtual = new ArrayList<Double>();
+      double bitMult =  numeros2.get(i);
+
+      int desloc= ((numeros2.size()-1)- i);
+       //  o deslocamento feito na mutliplicação
+      
+      for(int d = 0 ; d< desloc ; d++){
+        linhaAtual.add(0.0) ;
+      }
+      for (int j = numeros.size() - 1; j >= 0; j--) {
+          double bitMultiplicado = numeros.get(j);
+          linhaAtual.add(0, bitMultiplicado * bitMult); 
+      }
+      estanderesultados.add(linhaAtual);
+    }
+
+    for(int i = 0; i<estanderesultados.size(); i++){
+      ArrayList<Double> proximaLinha = estanderesultados.get(i);
+
+      // 3. Igualamos os tamanhos antes de somar
+      // (A proximaLinha sempre será maior ou igual ao resultadoFinal)
+      while (resultadoFinal.size() < proximaLinha.size()) {
+          resultadoFinal.add(0, 0.0); // Adiciona zeros à esquerda
+      }
+      while (proximaLinha.size() < resultadoFinal.size()) {
+          proximaLinha.add(0, 0.0);
+      }
+      ArrayList<Double> somaTemporaria = new ArrayList<Double>();
+         vaiUm = 0;
+
+      for (int j = resultadoFinal.size() - 1; j >= 0; j--) {
+          double r = resultadoFinal.get(j) + proximaLinha.get(j) + vaiUm;
+          if (r == 0) { somaTemporaria.add(0, 0.0); vaiUm = 0; }
+          else if (r == 1) { somaTemporaria.add(0, 1.0); vaiUm = 0; }
+          else if (r == 2) { somaTemporaria.add(0, 0.0); vaiUm = 1; }
+          else if (r == 3) { somaTemporaria.add(0, 1.0); vaiUm = 1; }
+      }
+
+      if (vaiUm == 1) somaTemporaria.add(0, 1.0);
+
+      // 5. Atualizamos o resultadoFinal com o que acabamos de somar
+      resultadoFinal = somaTemporaria;
+    }
+    
 
     System.out.println("\n--- Resultado Final ---");
+    System.out.println(resultadoFinal);
     System.out.println("Primeiro numero binario em decimal: " + cont);
     System.out.println("Segundo numero binario em decimal: " + cont2);
     System.out.println("A soma do numero binario em decimal: " + cont3);
+    System.out.println("A multiplicação do numero binario em decimal: " + cont*cont2);
     System.out.println("Primeiro numero binario: " + numeros);
     System.out.println("Segundo numero binario: " + numeros2);
     System.out.println("Soma dos binarios: " + soma);
+    System.out.println("Multiplicação dos binarios"+resultadoFinal);
 
     leitor.close();
   }
