@@ -1,5 +1,5 @@
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args) {
@@ -167,7 +167,7 @@ public class Main {
     
 
     System.out.println("\n--- Resultado Final ---");
-    System.out.println(resultadoFinal);
+    
     System.out.println("Primeiro numero binario em decimal: " + cont);
     System.out.println("Segundo numero binario em decimal: " + cont2);
     System.out.println("A soma do numero binario em decimal: " + cont3);
